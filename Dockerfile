@@ -1,8 +1,8 @@
 # Creates pseudo distributed hadoop 2.7.1
 #
-# docker build -t Section9Lab/hadoop .
+# docker build -t section9lab/hadoop:2.7.1 .
 
-FROM sequenceiq/pam:centos-6.5
+FROM centos:centos7
 MAINTAINER Section9Lab
 
 USER root
@@ -100,9 +100,7 @@ RUN curl -O 'https://repo.huaweicloud.com/apache/kafka/2.0.0/kafka_2.11-2.0.0.tg
     && sed -i s/"#listeners=PLAINTEXT:\/\/:9092"/"listeners=PLAINTEXT:\/\/bigdata.host:9092"/ /usr/local/kafka_2.11-2.0.0/config/server.properties \
     && sed -i s/"#advertised.listeners=PLAINTEXT:\/\/your.host.name:9092"/"advertised.listeners=PLAINTEXT:\/\/bigdata.host:9092"/ /usr/local/kafka_2.11-2.0.0/config/server.properties \
     && sed -i s/"zookeeper.connect=localhost:2181"/"zookeeper.connect=bigdata.host:2181"/ /usr/local/kafka_2.11-2.0.0/config/server.properties
-RUN echo sed -i "cd ~;/a\\  /usr/local/kafka_2.11-2.0.0/bin/zookeeper-server-start.sh /usr/local/kafka_2.11-2.0.0/config/zookeeper.properties;sleep 10;" /etc/bootstrap.sh \
-    && echo sed -i "cd ~;/a\\  /usr/local/kafka_2.11-2.0.0/bin/kafka-server-start.sh /usr/local/kafka_2.11-2.0.0/config/server.properties" /etc/bootstrap.sh
-
+    
 CMD ["/bin/hostname", "bigdata.host"]
 CMD ["/etc/bootstrap.sh", "-d"]
 
