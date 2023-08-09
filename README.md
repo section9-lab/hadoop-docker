@@ -10,7 +10,7 @@
 
 ### 1、获取dockerfile
 ```sh
-git clone https://github.com/section9-lab/hadoop-docker
+git clone https://github.com/section9-lab/hadoop-docker.git
 ```
 ### 2、构建docker image
 ```sh
