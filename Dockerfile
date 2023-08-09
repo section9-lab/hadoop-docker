@@ -91,9 +91,6 @@ RUN service sshd start && $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh && $HADOOP_PRE
 RUN service sshd start && $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh && $HADOOP_PREFIX/sbin/start-dfs.sh && $HADOOP_PREFIX/bin/hdfs dfs -put $HADOOP_PREFIX/etc/hadoop/ input
 
 ############### Kafka ####################
-RUN echo "export PS1='[\u@\h \W]'" > /etc/profile \
-    && source /etc/profile && cd ~ \
-    && sed -i "/\/bin\/bash;/a\\  source /etc/profile && cd ~;" /etc/bootstrap.sh 
 RUN curl -O 'https://repo.huaweicloud.com/apache/kafka/2.0.0/kafka_2.11-2.0.0.tgz' \
     && tar -zxvf kafka_2.11-2.0.0.tgz \
     && mv kafka_2.11-2.0.0 /usr/local/ \
