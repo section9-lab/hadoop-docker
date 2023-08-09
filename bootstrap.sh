@@ -23,6 +23,7 @@ fi
 
 if [[ $1 == "-bash" ]]; then
   /bin/bash;
-  /usr/local/kafka_2.11-2.0.0/bin/zookeeper-server-start.sh /usr/local/kafka_2.11-2.0.0/config/zookeeper.properties;
-  /usr/local/kafka_2.11-2.0.0/bin/kafka-server-start.sh /usr/local/kafka_2.11-2.0.0/config/server.properties;
+  echo "export PS1='[\u@\h \W]'" > /etc/profile;
+  source /etc/profile && cd ~ ;
+  /usr/local/kafka_2.11-2.0.0/bin/zookeeper-server-start.sh /usr/local/kafka_2.11-2.0.0/config/zookeeper.properties && /usr/local/kafka_2.11-2.0.0/bin/kafka-server-start.sh /usr/local/kafka_2.11-2.0.0/config/server.properties;
 fi
