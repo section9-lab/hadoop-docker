@@ -28,6 +28,15 @@ hadoop:2.7.1 /etc/bootstrap.sh -bash --privileged=true
 ```
 
 ## 使用方法2
+### 1、获取dcker image
 ```sh
 docker push tomatoandeggs/hadoop-docker:2.7.1
+```
+### 2、启动docker
+```sh
+> docker run -dti --hostname bigdata.host -p 50070:50070 -p 9000:9000 -p 8088:8088 -p 8040:8040 \
+-p 8042:8042 -p 49707:49707  -p 50010:50010  -p 50075:50075 -p 50090:50090 -p 2181:2181 -p 9092:9092 \
+hadoop:2.7.1 /etc/bootstrap.sh -bash --privileged=true
+
+> docker exec -ti xxxxx bash
 ```
