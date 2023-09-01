@@ -6,7 +6,7 @@
 比如面向Apache Spark、Apache Flink需要提交到Yarn的分布式任务的场景。
 
 
-## 使用方法
+## 使用方法1
 
 ### 1、获取dockerfile
 ```sh
@@ -25,4 +25,9 @@ git clone https://github.com/section9-lab/hadoop-docker.git
 hadoop:2.7.1 /etc/bootstrap.sh -bash --privileged=true
 
 > docker exec -ti xxxxx bash
+```
+
+## 使用方法2
+```sh
+docker push tomatoandeggs/hadoop-docker:2.7.1
 ```
